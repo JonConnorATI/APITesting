@@ -1,0 +1,27 @@
+{"level":30,"time":"2024-09-06T11:54:56.768Z","pid":7964,"hostname":"pc-prop-01818","msg":"Listening on 55568"}
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:9470:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:9991:59)
+    at PlaywrightServer.setTimeout (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:10237:57)
+    at C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:821:17
+    at Http2ServerCallStream.safeDeserializeMessage (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-call.js:395:13)
+    at ServerHttp2Stream.onEnd (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-call.js:382:22)
+    at ServerHttp2Stream.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+=============================================================
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:9470:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:9991:59)
+    at PlaywrightServer.setTimeout (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\index.js:10237:57)
+    at C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:821:17
+    at Http2ServerCallStream.safeDeserializeMessage (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-call.js:395:13)
+    at ServerHttp2Stream.onEnd (C:\Users\jonathan.connor\AppData\Local\Programs\Python\Python311\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-call.js:382:22)
+    at ServerHttp2Stream.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+=============================================================
+{"level":30,"time":"2024-09-06T11:54:57.010Z","pid":7964,"hostname":"pc-prop-01818","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2024-09-06T11:54:57.010Z","pid":7964,"hostname":"pc-prop-01818","msg":"End of node method closeAllBrowsers"}

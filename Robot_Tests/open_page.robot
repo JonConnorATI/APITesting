@@ -7,5 +7,5 @@ Resource            ../Resources/all_resources.resource
 Open the Browser and navigate to the homepage
     [Documentation]    Opens the browser and navigates to the homepage
     [Tags]
-    Log To Console    Test
+    Log To Console    WE ARE IN HERE
     

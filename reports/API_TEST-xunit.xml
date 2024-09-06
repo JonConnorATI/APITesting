@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="API Testing" tests="1" errors="0" failures="0" skipped="0" time="0.746" timestamp="2024-09-06T12:54:56.249000">
+<testsuite name="Open Page" tests="1" errors="0" failures="0" skipped="0" time="0.711" timestamp="2024-09-06T12:54:56.261000">
+<testcase classname="API Testing.Open Page" name="Open the Browser and navigate to the homepage" time="0.000">
+</testcase>
+<properties>
+<property name="Documentation" value="Navigate to the homepage"/>
+</properties>
+</testsuite>
+</testsuite>
