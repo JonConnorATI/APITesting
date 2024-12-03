@@ -46,9 +46,13 @@ However, You can also call the library directly in the test.
 
 //insert picture here///
 
+The Restull booker sites lists the API's in the following order:
+Get ALL records
+
+
 #### Get all records
 
-The Restfull booker site 
+ 
 
 ### Acknowledgements
 

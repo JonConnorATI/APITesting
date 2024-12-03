@@ -10,9 +10,11 @@ Library  Collections
 Library  DateTime
 Library  Browser  auto_closing_level=MANUAL
 Library  OperatingSystem
+Library  RequestsLibrary
+
 
 Resource  CommonKeywords.resource
-# Resource  LoginKeywords.resource
-# Resource  HomePageKeywords.resource
+Resource  apiKeywords.resource
+Resource  stringKeywords.resource
 # Resource  OrderNowKeywords.resource
 # Resource  CartKeywords.resource
