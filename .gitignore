@@ -104,11 +104,12 @@ ENV/
 .vscode
 
 # Robot Ouput files
+reports/*
 log.html
 output.xml
 report.html
 
-/.github/workflows/
+
 /.idea/
 /Robot_Tests_Practice/
 ArgumentFiles/PracticeRunner.robot
