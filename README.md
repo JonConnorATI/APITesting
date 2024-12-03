@@ -39,18 +39,33 @@ _There is an excellent website, [Restful Booker](https://restful-booker.herokuap
 
 We need to import the requests library. Here is the documentation, [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html), which contains all the information you might need as well as explanations and notes on all the keywords.
 
-I use a resource file that contains all the variables, librarys and my own defined methods. This way I can call them from any test and if they change I only have to change them in one place. 
-//insert pic here///
+The Restfull booker sites lists the API's in the following order:
 
-However, You can also call the library directly in the test. 
+* GetBookingIds
+  * All IDs
+  * By a single filter
+  * By multiple filters
+* GetBooking
+* CreateBooking
+* UpdateBooking
+* PartialUpdateBooking
+* DeleteBooking
 
-//insert picture here///
+We will go through each one and create a Robot Framework test to validate the API.
 
-The Restull booker sites lists the API's in the following order:
-Get ALL records
+#### GetBookingIds
 
+#### All ID's
 
-#### Get all records
+Lets have a look at the Documentation provided for this API
+![Image](Resources/Images/API_docs/getAllIDs.png "Snip of the API Documentation")
+<br>1, is a general description of the API. Note it will return something.
+<br>2, is the request type in this case "GET".
+<br>3, is the url we use to send to the API.
+
+We'll start writing the first test to get all the booking ID's
+![Image](Resources/Images/API_docs/Get_1.png "Snip of the first test")
+We need to create a variable to store what's going to be returned, as we might want to use that information to test something else. Also the "GET" keyword in the library can accept an argument to check the expected status. So lets refactor this test.
 
  
 

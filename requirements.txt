@@ -1,3 +1,5 @@
 # Automation test requirements
 robotframework
 robotframework-browser
+robotframework-requests
+
