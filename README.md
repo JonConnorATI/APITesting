@@ -61,13 +61,21 @@ Lets have a look at the Documentation provided for this API
 ![Image](Resources/Images/API_docs/getAllIDs.png "Snip of the API Documentation")
 <br>1, is a general description of the API. Note it will return something.
 <br>2, is the request type in this case "GET".
-<br>3, is the url we use to send to the API.
+<br>3, is the url we use to send to the API.<br>
+The documentation also states what it will return. A status code of "OK" if it is successful and an object with a list of booking ID's.<br>
+![Image](Resources/Images/API_docs/getAllIDsReturn.png "Snip of the API Return Documentation")
 
-We'll start writing the first test to get all the booking ID's
-![Image](Resources/Images/API_docs/Get_1.png "Snip of the first test")
-We need to create a variable to store what's going to be returned, as we might want to use that information to test something else. Also the "GET" keyword in the library can accept an argument to check the expected status. So lets refactor this test.
 
- 
+We'll start writing the first test to get all the booking ID's<br>
+![Image](Resources/Images/API_docs/Get_1.png "Snip of the first test")<br>
+We need to create a variable to store what's going to be returned, as we might want to use that information to test something else. The "GET" keyword in the library can accept an argument to check the expected status, it's set by default to expect OK. Robot Framework lets us pass default arguments to keywords.<br><br>
+
+So let's refactor this test, to include a step to count the number of bookings and check the expected status of the request.<br>
+![Image](Resources/Images/API_docs/Get_2.png "Snip of the first test refactored")<br>
+The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of ID's returned by getting the length of the variable, <span style="color:red">${response}</span>. We specify to the "Get Length" keyword that the variable is a json file ${response.json()}.
+
+#### By a single filter 
+Going back to the Documentation got "GetBookingIds" and selecting the 
 
 ### Acknowledgements
 

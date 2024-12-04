@@ -3,6 +3,16 @@ Documentation       API Practice Tests
 
 Resource        ../Resources/all_resources.resource
 
+
+
+
+
+
+
+
+
+
+
 *** Test Cases ***
 
 Test 1: Get all the booking ID's
@@ -11,6 +21,12 @@ Test 1: Get all the booking ID's
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
+
+Test 2a: Get all the bookings with a specific first name, "John"
+    [Documentation]  Returns the ids of all the bookings that exist within the API.
+    ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=John
+    ${no_of_bookings} =  Get Length    ${response.json()}
+    Log To Console    No of bookings is ${no_of_bookings}
 
 
 
