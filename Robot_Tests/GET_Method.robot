@@ -69,10 +69,7 @@ Delete a booking using the ID
 
 
 
-# curl -X DELETE \
-  #  https://restful-booker.herokuapp.com/booking/1 \
-  #  -H 'Content-Type: application/json' \
-  #  -H 'Cookie: token=abc123'
+
 
 
   
