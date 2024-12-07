@@ -5,7 +5,7 @@
 - [Introduction](#Introduction)
 - [API Testing vs UI Testing](#API-Testing-vs-UI-Testing)
 - [API Documentation](#api-documentation)
-- [Acknowledgements](#Acknowledgements)
+
 
 
 
@@ -78,11 +78,14 @@ _Don't worry if you don't get exactly the same result. The site is open for anyb
 
 #### By a single filter 
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 2.<br>
-![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br>
+![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br><br>
 This example searches for first name and last name. We are going to search just using the first name. Using the url from the previous request we need to add ```?``` and the parameter we'll be searching on. The parameters or filters we are using are specified in the documentation:
-![Image](Resources/Images/API_docs/Get_4.png "Snip of the parameter documentation")
+![Image](Resources/Images/API_docs/Get_4.png "Snip of the parameter documentation")<br><br>
+So to use a first name of John, we construct the url using the initial construct as in Test 1 ```https://restful-booker.herokuapp.com/booking``` and add ```?firstname=John``` to give ```https://restful-booker.herokuapp.com/booking?firstname=John``` like this:<br><br>
+![Image](Resources/Images/API_docs/Get_5.png "Snip of test 2a")<br><br>
 
-### Acknowledgements
+
+
 
 
 
