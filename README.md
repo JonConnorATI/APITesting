@@ -1,14 +1,25 @@
 # API Testing - Comparing Postman and Robot Framework with RequestsLibrary 
 
-#### Table of Contents
+## Table of Contents
 
 **[Introduction](#Introduction)**
 
- * [API Methods](#API-Methods)
+**[API Methods](#API-Methods)**
 
 **[API Testing vs UI Testing](#API-Testing-vs-UI-Testing)**
 
 **[API Documentation](#api-documentation)**
+
+**[Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary)**
+
+  * [GetBookingIds](#GetBookingIds)
+
+    * [All ID's](#All-IDs)
+    * [By a single filter](#By-a-single-filter)
+    * [By multiple filters](#By-multiple-filters)
+  
+  * [GetBooking](#GetBooking)
+
 
 **[1. Markdown](#heading--1)**
 
@@ -29,7 +40,7 @@
 
 This repository has been created to explain, how to use Robot Framework with RequestsLibray to automate tests that you might carry out using postman.
 
-##### API Methods
+### API Methods
 APIs have several methods used to create, read, update and delete.<br> 
 They are:
 * POST
@@ -50,7 +61,8 @@ _Request-->Do Something with an API Method --> Actual response --> Compare Actua
 When testing the UI, in theory we just need the url of the website, and we can start testing but with APIs there is no UI involved. We need to be given the documentation for each API we are testing._
 
 ### API Documentation
-There is an excellent website, [Restful Booker](https://restful-booker.herokuapp.com/), created by [Mark Winterington](http://mwtestconsultancy.co.uk/), for practicing API testing. I will be using this website and its content to help explain using  Robot Framework to test its APIs. This is a great resource for learning and has links to more learning sources for those who want to expand their knowledge. I would definitely recommend you check those out.
+There is an excellent website, [Restful Booker](https://restful-booker.herokuapp.com/), created by [Mark Winterington](http://mwtestconsultancy.co.uk/), for practicing API testing. I will be using this website and its content to help explain using  Robot Framework to test its APIs. This is a great resource for learning and has links to more learning sources for those who want to expand their knowledge. I would definitely recommend you check those out.<br><br>
+I will be referring to this page, from the Restful Booker site, throughout, to show how to create the code so that Robot Framework can carry out the requests, [API Docs](https://restful-booker.herokuapp.com/apidoc/index.html). 
 
 ### Robot Framework testing using RequestsLibrary
 
@@ -72,7 +84,7 @@ We will go through each one and create a Robot Framework test to validate the AP
 
 #### GetBookingIds
 
-##### All ID's
+##### All IDs
 
 Lets have a look at the Documentation provided for this API
 ![Image](Resources/Images/API_docs/getAllIDs.png "Snip of the API Documentation")
@@ -91,14 +103,31 @@ So let's refactor this test, to include a step to count the number of bookings a
 ![Image](Resources/Images/API_docs/Get_2.png "Snip of the first test refactored")<br>
 The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of ID's returned by getting the length of the variable, ```${response}```. We specify to the ```Get Length``` keyword that the variable is a json file ```${response.json()}```.<br><br>
 _Don't worry if you don't get exactly the same result. The site is open for anybody to change and interact with the data, it resets itself every 15 minutes, so you will most likely get different results._
-
-##### By a single filter 
+<br>
+##### By a single filter
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 2.<br>
 ![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br><br>
 This example searches for first name and last name. We are going to search just using the first name. Using the url from the previous request we need to add ```?``` and the parameter we'll be searching on. The parameters or filters we are using are specified in the documentation:
 ![Image](Resources/Images/API_docs/Get_4.png "Snip of the parameter documentation")<br><br>
 So to use a first name of John, we construct the url using the initial construct as in Test 1 ```https://restful-booker.herokuapp.com/booking``` and add ```?firstname=John``` to give ```https://restful-booker.herokuapp.com/booking?firstname=John``` like this:<br><br>
-![Image](Resources/Images/API_docs/Get_5.png "Snip of test 2a")<br><br>
+![Image](Resources/Images/API_docs/Get_5.png "Snip of test 1b")<br><br>
+##### By multiple filters
+Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 3.<br>
+![Image](Resources/Images/API_docs/Get_6.png "Snip of searching for checkin and checkout")<br><br>
+Its very similiar to searching with one parameter. The example shown uses checkin and checkout. So just like constructing the url for one parameter, checkin, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>``` then add ```&``` along with the next parameter so its the same as the example in the documentation, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>&checkout=<YYYY-MM-DD>```<br><br>
+We can use two or all the optional parameters to construct our request just add ```&``` between each ```parameter=value``` pair.<br><br>
+We will use the firstname and lastname parameters, to give ```https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown``` like this:<br><br>
+![Image](Resources/Images/API_docs/Get_7.png "Snip of test 1c")<br><br>
+
+#### GetBooking
+Lets have a look at the Documentation provided for this API
+![Image](Resources/Images/API_docs/Get_8.png "Snip of Get Booking API")<br><br>
+So this is telling us that we need to construct a request that contains the unique 'id' of the booking. Its also letting us know that by default a successful request will be return a response in json format.<br><br>
+Lets look further at the format and information in the response<br><br>
+![Image](Resources/Images/API_docs/Get_9.png "Snip of Get Booking API response")<br><br>
+We'll go ahead and get the booking information for the booking with id=1 and we'll use the response to print out all the fields into the console when we run our test<br><br>
+
+
 
 
 
