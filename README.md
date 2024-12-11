@@ -72,7 +72,7 @@ We will go through each one and create a Robot Framework test to validate the AP
 
 #### GetBookingIds
 
-#### All ID's
+##### All ID's
 
 Lets have a look at the Documentation provided for this API
 ![Image](Resources/Images/API_docs/getAllIDs.png "Snip of the API Documentation")
@@ -92,7 +92,7 @@ So let's refactor this test, to include a step to count the number of bookings a
 The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of ID's returned by getting the length of the variable, ```${response}```. We specify to the ```Get Length``` keyword that the variable is a json file ```${response.json()}```.<br><br>
 _Don't worry if you don't get exactly the same result. The site is open for anybody to change and interact with the data, it resets itself every 15 minutes, so you will most likely get different results._
 
-#### By a single filter 
+##### By a single filter 
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 2.<br>
 ![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br><br>
 This example searches for first name and last name. We are going to search just using the first name. Using the url from the previous request we need to add ```?``` and the parameter we'll be searching on. The parameters or filters we are using are specified in the documentation:
