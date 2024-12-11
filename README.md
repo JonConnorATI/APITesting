@@ -3,9 +3,12 @@
 #### Table of Contents
 
 **[Introduction](#Introduction)**
+
  * [API Methods](##API-Methods)
-**[API Testing vs UI Testing](#API-Testing-vs-UI-Testing)
-- [API Documentation](#api-documentation)
+
+**[API Testing vs UI Testing](#API-Testing-vs-UI-Testing)**
+
+**[API Documentation](#api-documentation)**
 
 **[1. Markdown](#heading--1)**
 
