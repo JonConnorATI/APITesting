@@ -15,26 +15,31 @@ Resource        ../Resources/all_resources.resource
 
 *** Test Cases ***
 
-Test 1: Get all the booking ID's
+Test 1a: Get all the booking ID's
     [Documentation]  Returns the ids of all the bookings that exist within the API.
     [Tags]  donotrun
     ${response} =  GET    https://restful-booker.herokuapp.com/booking  expected_status=OK
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
-
-Test 2a: Get all the bookings with a specific first name, "John"
+Test 1b: Get all the bookings with a specific first name, "John"
     [Documentation]  Returns the ids of all the bookings that exist within the API.
+    [Tags]  donotrun
     ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=John
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
-Test 2b: Get all the bookings with a specific first name, "John" and a specific second name, "Smith"
+Test 1c: Get all the bookings with a specific name, "Sally Brown"
     [Documentation]  Returns the ids of all the bookings that exist within the API.
-    ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=Johnand
+    [Tags]  donotrun
+    ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
+Test 2: Get the information for the booking with id=1
+    [Documentation]  Returns the fields for the booking with the given id
+    ${response} =  GET  url=https://restful-booker.herokuapp.com/booking/1
+    Log To Console   ${response.json()}
 
   
     
