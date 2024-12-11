@@ -4,7 +4,7 @@
 
 **[Introduction](#Introduction)**
 
- * [API Methods](##API-Methods)
+ * [API Methods](#API-Methods)
 
 **[API Testing vs UI Testing](#API-Testing-vs-UI-Testing)**
 
