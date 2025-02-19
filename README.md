@@ -21,19 +21,6 @@
   * [GetBooking](#GetBooking)
 
 
-**[1. Markdown](#heading--1)**
-
-  * [1.1. Markdown formatting cheatsheet](#heading--1-1)
-  * [1.2. Markdown formatting details](#heading--1-2)
-
-**[2. BBCode formatting](#heading--2)**
-
-  * [2.1. Basic text formatting](#heading--2-1)
-
-      * [2.1.1. Not so basic text formatting](#heading--2-1-1)
-
-  * [2.2. Lists, Images, Code](#heading--2-2)
-  * [2.3. Special features](#heading--2-3)
 
 
 ### Introduction
@@ -86,8 +73,8 @@ We will go through each one and create a Robot Framework test to validate the AP
 
 ##### All IDs
 
-Lets have a look at the Documentation provided for this API
-![Image](Resources/Images/API_docs/getAllIDs.png "Snip of the API Documentation")
+Let's have a look at the Documentation provided for this API
+![Snip of the API Documentation](Resources/Images/API_docs/getAllIDs.png)
 <br>1, is a general description of the API. Note it will return something.
 <br>2, is the request type in this case "GET".
 <br>3, is the url we use to send to the API.<br>
@@ -125,7 +112,24 @@ Lets have a look at the Documentation provided for this API
 So this is telling us that we need to construct a request that contains the unique 'id' of the booking. Its also letting us know that by default a successful request will be return a response in json format.<br><br>
 Lets look further at the format and information in the response<br><br>
 ![Image](Resources/Images/API_docs/Get_9.png "Snip of Get Booking API response")<br><br>
-We'll go ahead and get the booking information for the booking with id=1 and we'll use the response to print out all the fields into the console when we run our test<br><br>
+We'll go ahead and get the booking information for the booking with id=1 and we'll use the response to print out all the fields into the console when we run our test.
+
+Here's the Robot Test Case
+
+![Get request test case for booking with id=1](/Resources/Images/API_docs/test_2.png)
+
+And here is the output in the report
+
+![Get request return json file](/Resources/Images/API_docs/getID_one_return.png)
+
+#### Create Booking
+We'll start by looking at the documentation for this API
+![Create booking API Docs](/Resources/Images/API_docs/createBooking_1.png)
+
+So we need to use a POST request and pass in the booking information in json format.
+
+
+
 
 
 

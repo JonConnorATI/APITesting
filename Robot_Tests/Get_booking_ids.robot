@@ -3,16 +3,6 @@ Documentation       API Practice Tests
 
 Resource        ../Resources/all_resources.resource
 
-
-
-
-
-
-
-
-
-
-
 *** Test Cases ***
 
 Test 1a: Get all the booking ID's
