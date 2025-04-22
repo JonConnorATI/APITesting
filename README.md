@@ -69,9 +69,9 @@ The Restfull booker sites lists the API's in the following order:
 
 We will go through each one and create a Robot Framework test to validate the API.
 
-#### GetBookingIds
+### GetBookingIds
 
-##### All IDs
+#### All IDs
 
 Let's have a look at the Documentation provided for this API
 ![Snip of the API Documentation](Resources/Images/API_docs/getAllIDs.png)
@@ -91,14 +91,14 @@ So let's refactor this test, to include a step to count the number of bookings a
 The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of ID's returned by getting the length of the variable, ```${response}```. We specify to the ```Get Length``` keyword that the variable is a json file ```${response.json()}```.<br><br>
 _Don't worry if you don't get exactly the same result. The site is open for anybody to change and interact with the data, it resets itself every 15 minutes, so you will most likely get different results._
 <br>
-##### By a single filter
+#### By a single filter
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 2.<br>
 ![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br><br>
 This example searches for first name and last name. We are going to search just using the first name. Using the url from the previous request we need to add ```?``` and the parameter we'll be searching on. The parameters or filters we are using are specified in the documentation:
 ![Image](Resources/Images/API_docs/Get_4.png "Snip of the parameter documentation")<br><br>
 So to use a first name of John, we construct the url using the initial construct as in Test 1 ```https://restful-booker.herokuapp.com/booking``` and add ```?firstname=John``` to give ```https://restful-booker.herokuapp.com/booking?firstname=John``` like this:<br><br>
 ![Image](Resources/Images/API_docs/Get_5.png "Snip of test 1b")<br><br>
-##### By multiple filters
+#### By multiple filters
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 3.<br>
 ![Image](Resources/Images/API_docs/Get_6.png "Snip of searching for checkin and checkout")<br><br>
 Its very similiar to searching with one parameter. The example shown uses checkin and checkout. So just like constructing the url for one parameter, checkin, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>``` then add ```&``` along with the next parameter so its the same as the example in the documentation, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>&checkout=<YYYY-MM-DD>```<br><br>
@@ -106,7 +106,7 @@ We can use two or all the optional parameters to construct our request just add 
 We will use the firstname and lastname parameters, to give ```https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown``` like this:<br><br>
 ![Image](Resources/Images/API_docs/Get_7.png "Snip of test 1c")<br><br>
 
-#### GetBooking
+### GetBooking
 Lets have a look at the Documentation provided for this API
 ![Image](Resources/Images/API_docs/Get_8.png "Snip of Get Booking API")<br><br>
 So this is telling us that we need to construct a request that contains the unique 'id' of the booking. Its also letting us know that by default a successful request will be return a response in json format.<br><br>
@@ -122,11 +122,19 @@ And here is the output in the report
 
 ![Get request return json file](/Resources/Images/API_docs/getID_one_return.png)
 
-#### Create Booking
+### Create Booking
 We'll start by looking at the documentation for this API
 ![Create booking API Docs](/Resources/Images/API_docs/createBooking_1.png)
 
-So we need to use a POST request and pass in the booking information in json format.
+So we need to use a POST request and specify in the header what format we will pass in the booking information, in our case the json format.
+
+We can see the requirements of each field to complete a request. What it's data type is and if it is optional.
+![Create booking API Docs specs](/Resources/Images/API_docs/createBooking_2.png)
+
+
+
+
+
 
 
 
