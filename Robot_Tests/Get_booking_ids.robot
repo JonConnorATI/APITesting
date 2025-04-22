@@ -29,7 +29,7 @@ Test 1c: Get all the bookings with a specific name, "Sally Brown"
 Test 2: Get the information for the booking with id=1
     [Documentation]  Returns the fields for the booking with the given id
     ${response} =  GET  url=https://restful-booker.herokuapp.com/booking/1
-    Log To Console   ${response.json()}
+    Log To Console   This is the booking info ${response.json()}
 
   
     
