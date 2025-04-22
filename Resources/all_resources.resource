@@ -8,9 +8,10 @@ Variables  ../PageObjects/locators-common.py
 Library  String
 Library  Collections
 Library  DateTime
-Library  Browser  auto_closing_level=MANUAL
+# Library  Browser
 Library  OperatingSystem
 Library  RequestsLibrary
+
 
 
 Resource  CommonKeywords.resource

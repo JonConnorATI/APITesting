@@ -28,8 +28,20 @@ Test 1c: Get all the bookings with a specific name, "Sally Brown"
 
 Test 2: Get the information for the booking with id=1
     [Documentation]  Returns the fields for the booking with the given id
+    [Tags]  donotrun
     ${response} =  GET  url=https://restful-booker.herokuapp.com/booking/1
     Log To Console   This is the booking info ${response.json()}
 
-  
+Test 3: Create a booking (Refactored)
+    [Documentation]  Creates a new booking in the API
+    ${booking_dates}    Create Dictionary    checkin=2025-04-23    checkout=2025-04-30
+    ${pre_body} =  Create Dictionary    firstname=Jon    lastname=Connor    totalprice=200   depositpaid=true
+    ...     bookingdates=${booking_dates}
+    ${response} =  POST    url=https://restful-booker.herokuapp.com/booking    json=${pre_body}
+    ${id}    Set Variable    ${response.json()}[bookingid]
+    ${post_body} =  GET  url=https://restful-booker.herokuapp.com/booking/${id}
+    Lists Should Be Equal    ${pre_body}   ${post_body.json()}
+
+
+
     

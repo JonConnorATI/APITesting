@@ -128,8 +128,35 @@ We'll start by looking at the documentation for this API
 
 So we need to use a POST request and specify in the header what format we will pass in the booking information, in our case the json format.
 
-We can see the requirements of each field to complete a request. What it's data type is and if it is optional.
+We can see the requirements of each field to complete a request and what it's data type is.
 ![Create booking API Docs specs](/Resources/Images/API_docs/createBooking_2.png)
+
+First of all lets put the information into a format that we can send in the json format. The python dictionary type can easily be transformed into JSON.
+
+We'll set the ```firstname```, ```lastname```, ```totalprice```, ```depositpaid``` as a dictionary, we'll call ```&{body}``` and create another dictionary called ```&{booking_dates}``` and add this to the ```&{body}``` dictionary.
+
+Also as in all our other tests we'll store the response in variable and ensure all the information we sent is included in the booking response. So our test will look like this:
+![Create booking Robot Test](/Resources/Images/API_docs/createBooking_3.png)
+
+As you can see it's a bit repetitive and long-winded. Lets try and simplify it.
+
+We get a booking ID when we create the booking in the response. So we could use this ID to get the booking body and compare it with the body we sent.
+![Create booking Robot Test Refactored](/Resources/Images/API_docs/createBooking_4.png)
+
+Here's the test after running in the report
+![Create booking Robot Test Refactored](/Resources/Images/API_docs/createBooking_5.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

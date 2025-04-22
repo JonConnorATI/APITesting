@@ -1,5 +1,5 @@
 # Automation test requirements
 robotframework
-robotframework-browser
+robotframework-browser == 8.4.0
 robotframework-requests
 
