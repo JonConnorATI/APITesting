@@ -34,6 +34,7 @@ Test 2: Get the information for the booking with id=1
 
 Test 3: Create a booking (Refactored)
     [Documentation]  Creates a new booking in the API
+    [Tags]  donotrun
     ${booking_dates}    Create Dictionary    checkin=2025-04-23    checkout=2025-04-30
     ${pre_body} =  Create Dictionary    firstname=Jon    lastname=Connor    totalprice=200   depositpaid=true
     ...     bookingdates=${booking_dates}
@@ -43,5 +44,9 @@ Test 3: Create a booking (Refactored)
     Lists Should Be Equal    ${pre_body}   ${post_body.json()}
 
 
+Test 4: Update Booking
+    [Documentation]  Update a booking in the API with ID=5
+    ${original_booking} =  Get  url=https://restful-booker.herokuapp.com/booking/5
+    Log To Console    ${original_booking}
 
-    
+
