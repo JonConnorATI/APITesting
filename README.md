@@ -156,6 +156,27 @@ To summarise what we did:
 
 ### UpdateBooking
 
+To update a booking using the ```PUT``` request, we need to send authentication along with the payload. Authentication in simple terms means we log into the API and receive a token. Presenting that token to the API means you have permission to change or update things.
+
+Lets have a look at the Documentation for a ```PUT``` request.
+![Put documentation](Resources/Images/API_docs/updatesPutBooking_1.png)
+
+So we need a URL with the booking ID, a content-type (payload) in JSON format, Accept means the response will be in JSON format, and we need to provide it with a cookie so the API can check if we are allowed to change things.
+
+Here's some further documentation on what we need to provide for the request and what a successful request will return
+![Put documentation](Resources/Images/API_docs/updatesPutBooking_2.png)
+
+So lets handle [getting the token](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken) for the API first. We can see from the documentation that it consists of a ```POST``` request which we have done before and includes the username and password we need to send in the payload
+![AUTH documentation](Resources/Images/API_docs/updatesPutBooking_3.png)
+
+
+
+
+
+
+
+
+
 
 
 
