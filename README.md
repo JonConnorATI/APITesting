@@ -19,6 +19,7 @@
     * [By multiple filters](#By-multiple-filters)
   
   * [GetBooking](#GetBooking)
+  * [UpdateBooking](#UpdateBooking)
 
 
 
@@ -143,8 +144,22 @@ As you can see it's a bit repetitive and long-winded. Lets try and simplify it.
 We get a booking ID when we create the booking in the response. So we could use this ID to get the booking body and compare it with the body we sent.
 ![Create booking Robot Test Refactored](/Resources/Images/API_docs/createBooking_4.png)
 
-Here's the test after running in the report
+Here's the report after running the refactored test.
 ![Create booking Robot Test Refactored](/Resources/Images/API_docs/createBooking_5.png)
+
+To summarise what we did:
+* Created a payload/body for our Post request
+* Did a Post request to create a booking
+* Got the ID from the booking
+* Carried out a Get request on the booking ID
+* Verified the original payload we created matches the Get payload
+
+### UpdateBooking
+
+
+
+
+
 
 
 
