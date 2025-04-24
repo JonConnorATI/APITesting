@@ -45,8 +45,37 @@ Test 3: Create a booking (Refactored)
 
 
 Test 4: Update Booking
-    [Documentation]  Update a booking in the API with ID=5
-    ${original_booking} =  Get  url=https://restful-booker.herokuapp.com/booking/5
-    Log To Console    ${original_booking}
+    [Documentation]  1.Get the auth token-->2.Create a booking-->3.Update the booking-->4.Verify all updated
+    ################### 1. Get the authorisation ###################
+    ${body}    Create Dictionary    username=admin    password=password123
+    ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
+    Log    ${response.json()}
+    ${token}    Set Variable    ${response.json()}[token]
+    ${auth_header} =  Create Dictionary  Cookie=token\=${token}
+   ################### 2. Create a booking and get the ID ###################
+    ${booking_dates}    Create Dictionary    checkin=2025-04-23    checkout=2025-04-30
+    ${pre_body} =  Create Dictionary    firstname=Jon    lastname=Connor    totalprice=200   depositpaid=true
+    ...     bookingdates=${booking_dates}
+    ${response} =  POST    url=https://restful-booker.herokuapp.com/booking    json=${pre_body}
+    ${id}    Set Variable    ${response.json()}[bookingid]
+    ################### 3. Update the booking ###################
+    ${new_booking_dates}    Create Dictionary    checkin=2025-05-23    checkout=2025-05-30
+    ${updated_body} =  Create Dictionary    firstname=Dave    lastname=Roconn    totalprice=300   depositpaid=true
+    ...     bookingdates=${new_booking_dates}  additionalneeds=Dinner, Bed and Breakfast
+    ${updated_booking} =  PUT  url=https://restful-booker.herokuapp.com/booking/${id}
+    ...                      json=${updated_body}  headers=${auth_header}  expected_status=OK
+    ################### 4. Verify all updated ###################
+    ${new_body} =  GET  url=https://restful-booker.herokuapp.com/booking/${id}
+    Lists Should Be Equal    ${updated_body}   ${new_body.json()}
+
+
+
+
+
+
+
+
+
+
 
 
