@@ -20,6 +20,7 @@
   
   * [GetBooking](#GetBooking)
   * [UpdateBooking](#UpdateBooking)
+  * [PartialUpdate](#PartialUpdate)
 
 
 
@@ -166,8 +167,23 @@ So we need a URL with the booking ID, a content-type (payload) in JSON format, A
 Here's some further documentation on what we need to provide for the request and what a successful request will return
 ![Put documentation](Resources/Images/API_docs/updatesPutBooking_2.png)
 
-So lets handle [getting the token](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken) for the API first. We can see from the documentation that it consists of a ```POST``` request which we have done before and includes the username and password we need to send in the payload
+So lets handle [getting the token](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken) for the API first. We can see from the documentation that it consists of a ```POST``` request which we have done before.
 ![AUTH documentation](Resources/Images/API_docs/updatesPutBooking_3.png)
+
+We need to save the response payload which is the token we need to use in the ```PUT``` request. Let's get that ready in Robot Framework.
+![AUTH method in Robot Framework](Resources/Images/API_docs/updatesPutBooking_4.png)
+
+Then we need to create a new booking, get the new booking ID, update the booking, using a PUT request and then ensure the updated booking contains the new information.
+![AUTH method in Robot Framework](Resources/Images/API_docs/updatesPutBooking_5.png)
+
+Now there's a lot going on and it may look confusing, but if we consider each line of the code it feeds into the next line. We can definitely refactor this and simplify it, by moving steps into their own methods/keywords which we can reuse again. For now, we will keep as is, and later I will share how I've refactored the tests to make them simpler and easier to maintain. Sometimes it's easier to follow the long-winded method while we understand what is happening and then get more abstract as our expertise increases.
+
+## PartialUpdate
+
+To partially update a booking we only need to change a minimum of 1 parameter
+
+
+
 
 
 
