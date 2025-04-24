@@ -106,7 +106,7 @@ ENV/
 # Robot Ouput files
 reports/*
 log.html
-output.xml
+*output.xml
 report.html
 
 
