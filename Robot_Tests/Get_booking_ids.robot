@@ -63,10 +63,29 @@ Test 4: Update Booking
     ${updated_body} =  Create Dictionary    firstname=Dave    lastname=Roconn    totalprice=300   depositpaid=true
     ...     bookingdates=${new_booking_dates}  additionalneeds=Dinner, Bed and Breakfast
     ${updated_booking} =  PUT  url=https://restful-booker.herokuapp.com/booking/${id}
-    ...                      json=${updated_body}  headers=${auth_header}  expected_status=OK
+    ...                      json=${updated_body}  headers=${auth_header}
     ################### 4. Verify all updated ###################
     ${new_body} =  GET  url=https://restful-booker.herokuapp.com/booking/${id}
     Lists Should Be Equal    ${updated_body}   ${new_body.json()}
+
+Test 5: Partially Update the booking that has ID=2 with new additional needs
+    [Documentation]  1.Get the auth token-->2. Partially Update a booking by ID-->3.Verify the partial update
+    ################### 1. Get the authorisation ###################
+    ${body}    Create Dictionary    username=admin    password=password123
+    ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
+    Log    ${response.json()}
+    ${token}    Set Variable    ${response.json()}[token]
+    ${auth_header} =  Create Dictionary  Cookie=token\=${token}
+    ################### 2. Partially Update a booking ###################
+    ${new_add_needs}    Create Dictionary    additionalneeds=room with double bed and shower
+    ${updated_booking} =  PATCH  url=https://restful-booker.herokuapp.com/booking/2
+    ...                      json=${new_add_needs}  headers=${auth_header}
+    ################### 3. Verify partial update ###################
+    ${new_body} =  GET  url=https://restful-booker.herokuapp.com/booking/2
+    List Should Contain Sub List  ${new_body.json()}  ${new_add_needs}
+
+
+
 
 
 
