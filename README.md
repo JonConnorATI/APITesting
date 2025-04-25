@@ -180,7 +180,30 @@ Now there's a lot going on and it may look confusing, but if we consider each li
 
 ## PartialUpdate
 
-To partially update a booking we only need to change a minimum of 1 parameter
+The booking ID is sent in the url to partially update a booking. We only need to change a minimum of 1 parameter or in other words, send a partial payload. 
+![Update documentation 1](Resources/Images/API_docs/updatesPartialBooking_1.png)
+
+Similar to the ```PUT``` request, the ```PATCH``` request also requires authorization. The other details needed in the header are shown below.
+![Update documentation 2](Resources/Images/API_docs/updatesPartialBooking_2.png)
+
+The body or payload we send can include one or more of the parameters below.
+![Update documentation 3](Resources/Images/API_docs/updatesPartialBooking_3.png)
+
+The response includes the details below.
+![Update documentation 4](Resources/Images/API_docs/updatesPartialBooking_4.png)
+
+Now we know what we need lets change the "additional needs" of the booking with id=2 in Robot Framework.
+![Update documentation 5](Resources/Images/API_docs/updatesPartialBooking_5.png)
+
+Here are the Results in the report
+![Update documentation 5a](Resources/Images/API_docs/updatesPartialBooking_5a.png)
+
+
+
+
+
+
+
 
 
 
