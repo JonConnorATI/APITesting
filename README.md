@@ -208,6 +208,12 @@ From the documentation below you can see we need, the url that contains the book
 ![Delete Documentation](Resources/Images/API_docs/Delete_Booking_1.png)
 
 Let's have a look how we can do that in Robot Framework.
+![ROBOT Test Case](Resources/Images/API_docs/Delete_Booking_2.png)
+
+We got the authorisation token, put it in a header then passed this along with the url plus the ID, which we are using, added to the end ```../101``` On executing the  ```DELETE``` keyword we are checking that the ```expected_status=201```
+
+This means the deletion was successfully carried out. So if we try to look up the booking with ```ID=101``` then after being deleted it should no longer be in the database. So running the ```GET``` keyword should not find any record, so we are checking that the ```expected_status=404``` which means it's "Not Found"
+
 
 
 

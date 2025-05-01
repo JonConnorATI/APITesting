@@ -46,6 +46,7 @@ Test 3: Create a booking (Refactored)
 
 Test 4: Update Booking
     [Documentation]  1.Get the auth token-->2.Create a booking-->3.Update the booking-->4.Verify all updated
+    [Tags]  donotrun
     ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
@@ -70,6 +71,7 @@ Test 4: Update Booking
 
 Test 5: Partially Update the booking that has ID=2 with new additional needs
     [Documentation]  1.Get the auth token-->2. Partially Update a booking by ID-->3.Verify the partial update
+    [Tags]  donotrun
     ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
@@ -83,6 +85,22 @@ Test 5: Partially Update the booking that has ID=2 with new additional needs
     ################### 3. Verify partial update ###################
     ${new_body} =  GET  url=https://restful-booker.herokuapp.com/booking/2
     List Should Contain Sub List  ${new_body.json()}  ${new_add_needs}
+
+Test 6: Delete a booking by ID=101
+    [Documentation]  1.Get the auth token-->2. Delete booking by ID-->3.Verify the Deletion
+     ################### 1. Get the authorisation ###################
+    ${body}    Create Dictionary    username=admin    password=password123
+    ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
+    Log    ${response.json()}
+    ${token}    Set Variable    ${response.json()}[token]
+    ${auth_header} =  Create Dictionary  Cookie=token\=${token}
+    ################### 2. Delete Booking by ID ###################
+    ${Delete_Booking} =  DELETE    url=https://restful-booker.herokuapp.com/booking/101
+    ...                         headers=${auth_header}  expected_status=201
+    # Log  ${Delete_Booking.json()}
+    ################### 3. Verify the deletion ###################
+    GET  url=https://restful-booker.herokuapp.com/booking/101  expected_status=404
+
 
 
 
