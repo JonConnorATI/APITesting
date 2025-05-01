@@ -239,7 +239,7 @@ We now understand how to construct the URL for each method, pass authorization a
 
 This repository aims to help you construct test steps and use the correct syntax to create Test Cases. We are using the Restful Booker API documentation for demonstration purposes, not for actual testing.
 
-As mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can sometimes be lengthy and appear complex. Here is a link to all the tests we created <a href="Robot_Tests/API_methods.robot" target="_blank">API Methods</a>. 
+As mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can sometimes be lengthy and appear complex. Here is a link to all the tests we created <a href="https://github.com/JonConnorATI/APITesting/blob/main/Robot_Tests/API_methods.robot" target="_blank">API Methods</a>. 
 
 I refactored each method by moving keywords into a resource file for reusability. Additionally, I implemented a function to generate random data, eliminating the need to manually input data repeatedly. The refactored tests can be found here [API_Methods_Refactored](Robot_Tests/API_methods_Refactored.robot).
 
