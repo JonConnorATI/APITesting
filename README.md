@@ -1,4 +1,4 @@
-# API Testing - Comparing Postman and Robot Framework with RequestsLibrary 
+# API Testing - Robot Framework with RequestsLibrary 
 
 ## Table of Contents
 
@@ -23,12 +23,14 @@
   * [PartialUpdate](#PartialUpdate)
   * [DeleteBooking](#DeleteBooking)
 
+**[Discussion](#Discussion)**
+
 
 
 
 ### Introduction
 
-This repository has been created to explain, how to use Robot Framework with RequestsLibray to automate tests that you might carry out using postman.
+This repository has been created to explain, how to use Robot Framework with RequestsLibray to automate tests that you might carry out using ```postman.```
 
 ### API Methods
 APIs have several methods used to create, read, update and delete.<br> 
@@ -213,6 +215,44 @@ Let's have a look how we can do that in Robot Framework.
 We got the authorisation token, put it in a header then passed this along with the url plus the ID, which we are using, added to the end ```../101``` On executing the  ```DELETE``` keyword we are checking that the ```expected_status=201```
 
 This means the deletion was successfully carried out. So if we try to look up the booking with ```ID=101``` then after being deleted it should no longer be in the database. So running the ```GET``` keyword should not find any record, so we are checking that the ```expected_status=404``` which means it's "Not Found"
+
+Here's the report for this Test Case
+![ROBOT Test Report](Resources/Images/API_docs/Delete_Booking_3.png)
+
+All these 
+
+### Discussion
+
+That has covered using the Requests Library in Robot Framework to carry out the following API methods: 
+* POST
+* GET
+* PUT 
+* PATCH
+* DELETE
+
+We now know how to construct the url for the method and pass in authorisation and required data using the ```body``` and ```Headers``` notation and how to use the response to verify the information received back from the API.
+
+#### Testing
+
+The aim of this repository is to help you construct the test steps and use the correct syntax to create Test Cases. We are not actually testing the Restful Booker API's but rather using the documentation provided to fulfill this aim.
+
+As I mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can be very long-winded and look complicated. Here is a link to all the tests we created [API_Methods](Robot_Tests/API_methods.robot). I refactored each method and moved keywords into a resource page so they can be used again. I also created a method to generate random data, so we don't have to keep typing in data. The refactored tests are here [API_Methods_Refactored](Robot_Tests/API_methods_Refactored.robot).
+
+Hopefully that makes it clearer if you're looking to run API tests in Robot Framework instead of or as well as ```Postman```
+
+Bear in mind the Restful Booker API's and website is free. There are some issues, for example when creating a record should the response code be 201 rather than 200? When deleting a record should the response code be 200 rather than 201? 
+
+Also, when a booking is created and the deposit paid is set to ```False``` when I look at the booking again the deposit paid is set to ```True```. That could be a big issue for the company.
+
+Can you spot any other issues? If you create your own tests and verify expected responses vs actual responses I'm sure you will find other issues. 
+
+Anyway I hope this has helped. 
+
+## Happy Testing.
+
+
+
+
 
 
 
