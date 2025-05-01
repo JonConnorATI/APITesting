@@ -14,7 +14,7 @@
 
   * [GetBookingIds](#GetBookingIds)
 
-    * [All ID's](#All-IDs)
+    * [All IDs](#All-IDs)
     * [By a single filter](#By-a-single-filter)
     * [By multiple filters](#By-multiple-filters)
   
@@ -30,7 +30,7 @@
 
 ### Introduction
 
-This repository has been created to explain, how to use Robot Framework with RequestsLibray to automate tests that you might carry out using ```postman.```
+This repository has been created to explain, how to use Robot Framework with RequestsLibrary to automate tests that you might carry out using `Postman.`
 
 ### API Methods
 APIs have several methods used to create, read, update and delete.<br> 
@@ -42,25 +42,20 @@ They are:
 * DELETE
 
 The general rule of thumb is POST is used to create, GET is used to read, PUT and PATCH are used to update and DELETE to delete.<br>
-A request uses one of the methods (POST, GET, PUT, PATCH or DELETE) and when executed sends a response. We are usually looking for the response to be '200' which means its OK._<br>
+A request uses one of the methods (POST, GET, PUT, PATCH or DELETE) and when executed sends a response. We are usually looking for the response to be '200' which means it's OK.<br>
 Depending on the API, and how it was developed, it may or may not be programmed to send additional information. We can verify our tests by capturing these responses and asserting we are getting the correct response when we carry out a request.
 
 _Our Test_<br>
-_Request-->Do Something with an API Method --> Actual response --> Compare Actual response vs Expected response --> Pass or Fail_
+`Request-->Do Something with an API Method --> Actual response --> Compare Actual response vs Expected response --> Pass or Fail`
 
 
 ### API Testing Vs UI Testing
-When testing the UI, in theory we just need the url of the website, and we can start testing but with APIs there is no UI involved. We need to be given the documentation for each API we are testing._
+When testing the UI, in theory, we just need the URL of the website, and we can start testing. However, with APIs, there is no UI involved. Instead, we need to be given the documentation for each API we are testing.
 
 ### API Documentation
 There is an excellent website, [Restful Booker](https://restful-booker.herokuapp.com/), created by [Mark Winterington](http://mwtestconsultancy.co.uk/), for practicing API testing. I will be using this website and its content to help explain using  Robot Framework to test its APIs. This is a great resource for learning and has links to more learning sources for those who want to expand their knowledge. I would definitely recommend you check those out.<br><br>
-I will be referring to this page, from the Restful Booker site, throughout, to show how to create the code so that Robot Framework can carry out the requests, [API Docs](https://restful-booker.herokuapp.com/apidoc/index.html). 
 
-### Robot Framework testing using RequestsLibrary
-
-We need to import the requests library. Here is the documentation, [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html), which contains all the information you might need as well as explanations and notes on all the keywords.
-
-The Restfull booker sites lists the API's in the following order:
+The Restfull booker sites lists the APIs in the following order:
 
 * GetBookingIds
   * All IDs
@@ -72,7 +67,11 @@ The Restfull booker sites lists the API's in the following order:
 * PartialUpdateBooking
 * DeleteBooking
 
-We will go through each one and create a Robot Framework test to validate the API.
+I will be referring to this page, from the Restful Booker site, throughout, to show how to create the code so that Robot Framework can carry out the requests. You can find the API documentation [here](https://restful-booker.herokuapp.com/apidoc/index.html).
+
+### Robot Framework testing using RequestsLibrary
+
+We need to import the requests library. Here is the documentation, [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html), which contains all the information you might need as well as explanations and notes on all the keywords.
 
 ### GetBookingIds
 
@@ -80,43 +79,53 @@ We will go through each one and create a Robot Framework test to validate the AP
 
 Let's have a look at the Documentation provided for this API
 ![Snip of the API Documentation](Resources/Images/API_docs/getAllIDs.png)
-<br>1, is a general description of the API. Note it will return something.
-<br>2, is the request type in this case "GET".
-<br>3, is the url we use to send to the API.<br>
-The documentation also states what it will return. A status code of "OK" if it is successful and an object with a list of booking ID's.<br>
+1. is a general description of the API. Note it will return something.
+2. is the request type in this case "GET".
+3. is the URL we use to send to the API.
+
+The documentation also states what it will return. A status code of "OK" if it is successful and an object with a list of booking IDs.
+
 ![Image](Resources/Images/API_docs/getAllIDsReturn.png "Snip of the API Return Documentation")
 
 
-We'll start writing the first test to get all the booking ID's<br>
-![Image](Resources/Images/API_docs/Get_1.png "Snip of the first test")<br>
-We need to create a variable to store what's going to be returned, as we might want to use that information to test something else. The ```GET``` keyword in the library can accept an argument to check the expected status, it's set by default to expect OK. Robot Framework lets us pass default arguments to keywords.<br><br>
+We'll start writing the first test to get all the booking IDs<br>
+![Image](Resources/Images/API_docs/Get_1.png "Snip of the first test")
+Create a variable to store the returned data for further testing. The `GET` keyword can check the expected status, defaulting to OK. Robot Framework allows passing default arguments to keywords.
+
 
 So let's refactor this test, to include a step to count the number of bookings and check the expected status of the request.<br>
 ![Image](Resources/Images/API_docs/Get_2.png "Snip of the first test refactored")<br>
-The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of ID's returned by getting the length of the variable, ```${response}```. We specify to the ```Get Length``` keyword that the variable is a json file ```${response.json()}```.<br><br>
+The status from the API request is OK otherwise the first step would have failed. We are saving the results of our request in a variable. We can count the number of IDs returned by getting the length of the variable, ```${response}```. We specify to the ```Get Length``` keyword that the variable is a JSON file ```${response.json()}```.<br><br>
 _Don't worry if you don't get exactly the same result. The site is open for anybody to change and interact with the data, it resets itself every 15 minutes, so you will most likely get different results._
 <br>
 #### By a single filter
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 2.<br>
-![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")<br><br>
-This example searches for first name and last name. We are going to search just using the first name. Using the url from the previous request we need to add ```?``` and the parameter we'll be searching on. The parameters or filters we are using are specified in the documentation:
+![Image](Resources/Images/API_docs/Get_3.png "Snip of the first test refactored")
+
+This example searches for first name and last name. We are going to search just using the first name. Add `?` and the search parameter to the URL from the previous request. The parameters are specified in the documentation. 
 ![Image](Resources/Images/API_docs/Get_4.png "Snip of the parameter documentation")<br><br>
-So to use a first name of John, we construct the url using the initial construct as in Test 1 ```https://restful-booker.herokuapp.com/booking``` and add ```?firstname=John``` to give ```https://restful-booker.herokuapp.com/booking?firstname=John``` like this:<br><br>
+So to use a first name of John, we construct the URL using the initial construct as in Test 1 ```https://restful-booker.herokuapp.com/booking``` and add ```?firstname=John``` to give ```https://restful-booker.herokuapp.com/booking?firstname=John``` like this:<br><br>
 ![Image](Resources/Images/API_docs/Get_5.png "Snip of test 1b")<br><br>
 #### By multiple filters
 Going back to the Documentation got "GetBookingIds" and selecting the next tab Example 3.<br>
 ![Image](Resources/Images/API_docs/Get_6.png "Snip of searching for checkin and checkout")<br><br>
-Its very similiar to searching with one parameter. The example shown uses checkin and checkout. So just like constructing the url for one parameter, checkin, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>``` then add ```&``` along with the next parameter so its the same as the example in the documentation, ```https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>&checkout=<YYYY-MM-DD>```<br><br>
-We can use two or all the optional parameters to construct our request just add ```&``` between each ```parameter=value``` pair.<br><br>
-We will use the firstname and lastname parameters, to give ```https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown``` like this:<br><br>
-![Image](Resources/Images/API_docs/Get_7.png "Snip of test 1c")<br><br>
+It's similar to searching with one parameter. For checkin and checkout, construct the URL as `https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>&checkout=<YYYY-MM-DD>` then add `&` along with the next parameter so its the same as the example in the documentation, `https://restful-booker.herokuapp.com/booking?checkin=<YYYY-MM-DD>&checkout=<YYYY-MM-DD>`
+
+We can use two or all the optional parameters to construct our request just add `&` between each `parameter=value` pair.
+
+We will use the firstname and lastname parameters, to give `https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown` like this:
+
+![Image](Resources/Images/API_docs/Get_7.png "Snip of test 1c")
+
 
 ### GetBooking
 Lets have a look at the Documentation provided for this API
 ![Image](Resources/Images/API_docs/Get_8.png "Snip of Get Booking API")<br><br>
-So this is telling us that we need to construct a request that contains the unique 'id' of the booking. Its also letting us know that by default a successful request will be return a response in json format.<br><br>
+Construct a request with the unique booking ID. A successful request returns a response in JSON format.
+
 Lets look further at the format and information in the response<br><br>
-![Image](Resources/Images/API_docs/Get_9.png "Snip of Get Booking API response")<br><br>
+![Image](Resources/Images/API_docs/Get_9.png "Snip of Get Booking API response")
+
 We'll go ahead and get the booking information for the booking with id=1 and we'll use the response to print out all the fields into the console when we run our test.
 
 Here's the Robot Test Case
@@ -131,14 +140,12 @@ And here is the output in the report
 We'll start by looking at the documentation for this API
 ![Create booking API Docs](/Resources/Images/API_docs/createBooking_1.png)
 
-So we need to use a POST request and specify in the header what format we will pass in the booking information, in our case the json format.
+So we need to use a POST request and specify in the header what format we will pass in the booking information, in our case the JSON format.
 
 We can see the requirements of each field to complete a request and what it's data type is.
 ![Create booking API Docs specs](/Resources/Images/API_docs/createBooking_2.png)
 
-First of all lets put the information into a format that we can send in the json format. The python dictionary type can easily be transformed into JSON.
-
-We'll set the ```firstname```, ```lastname```, ```totalprice```, ```depositpaid``` as a dictionary, we'll call ```&{body}``` and create another dictionary called ```&{booking_dates}``` and add this to the ```&{body}``` dictionary.
+Format the information to send in JSON. Transform the Python dictionary type into JSON. Set `firstname`, `lastname`, `totalprice`, `depositpaid` in a dictionary called `&{body}` and add another dictionary `&{booking_dates}` to `&{body}`.
 
 Also as in all our other tests we'll store the response in variable and ensure all the information we sent is included in the booking response. So our test will look like this:
 ![Create booking Robot Test](/Resources/Images/API_docs/createBooking_3.png)
@@ -160,9 +167,9 @@ To summarise what we did:
 
 ### UpdateBooking
 
-To update a booking using the ```PUT``` request, we need to send authentication along with the payload. Authentication in simple terms means we log into the API and receive a token. Presenting that token to the API means you have permission to change or update things.
+To update a booking with a `PUT` request, send authentication with the payload. Authentication involves logging into the API and receiving a token, which grants permission to make changes
 
-Lets have a look at the Documentation for a ```PUT``` request.
+Lets have a look at the Documentation for a `PUT` request.
 ![Put documentation](Resources/Images/API_docs/updatesPutBooking_1.png)
 
 So we need a URL with the booking ID, a content-type (payload) in JSON format, Accept means the response will be in JSON format, and we need to provide it with a cookie so the API can check if we are allowed to change things.
@@ -170,10 +177,10 @@ So we need a URL with the booking ID, a content-type (payload) in JSON format, A
 Here's some further documentation on what we need to provide for the request and what a successful request will return
 ![Put documentation](Resources/Images/API_docs/updatesPutBooking_2.png)
 
-So lets handle [getting the token](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken) for the API first. We can see from the documentation that it consists of a ```POST``` request which we have done before.
+So lets handle [getting the token](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken) for the API first. We can see from the documentation that it consists of a `POST` request which we have done before.
 ![AUTH documentation](Resources/Images/API_docs/updatesPutBooking_3.png)
 
-We need to save the response payload which is the token we need to use in the ```PUT``` request. Let's get that ready in Robot Framework.
+We need to save the response payload which is the token we need to use in the `PUT` request. Let's get that ready in Robot Framework.
 ![AUTH method in Robot Framework](Resources/Images/API_docs/updatesPutBooking_4.png)
 
 Then we need to create a new booking, get the new booking ID, update the booking, using a PUT request and then ensure the updated booking contains the new information.
@@ -183,12 +190,10 @@ Now there's a lot going on and it may look confusing, but if we consider each li
 
 ### PartialUpdate
 
-To partially update a booking we use the ```PATCH``` request.
-
-The booking ID is sent in the url to partially update a booking. We only need to change a minimum of 1 parameter or in other words, send a partial payload. 
+Use a `PATCH` request to partially update a booking. Send the booking ID in the URL and change at least one parameter, sending a partial payload.
 ![Update documentation 1](Resources/Images/API_docs/updatesPartialBooking_1.png)
 
-Similar to the ```PUT``` request, the ```PATCH``` request also requires authorization. The other details needed in the header are shown below.
+Similar to the `PUT` request, the `PATCH` request also requires authorization. The other details needed in the header are shown below.
 ![Update documentation 2](Resources/Images/API_docs/updatesPartialBooking_2.png)
 
 The body or payload we send can include one or more of the parameters below.
@@ -204,51 +209,53 @@ Here are the Results in the report
 ![Update documentation 5a](Resources/Images/API_docs/updatesPartialBooking_5a.png)
 
 ### DeleteBooking
-To Delete a booking we use ```DELETE``` request.
-
-From the documentation below you can see we need, the url that contains the booking ID we want to delete and Authorisation. The API returns a success code when the operation has been completed.
+"Use a `DELETE` request to delete a booking. Send the URL containing the booking ID and authorization. The API returns a success code upon completion.
 ![Delete Documentation](Resources/Images/API_docs/Delete_Booking_1.png)
 
 Let's have a look how we can do that in Robot Framework.
 ![ROBOT Test Case](Resources/Images/API_docs/Delete_Booking_2.png)
 
-We got the authorisation token, put it in a header then passed this along with the url plus the ID, which we are using, added to the end ```../101``` On executing the  ```DELETE``` keyword we are checking that the ```expected_status=201```
+We got the authorization token, put it in a header then passed this along with the URL plus the ID, which we are using, added to the end `../101` On executing the  `DELETE` keyword we are checking that the `expected_status=201`
 
-This means the deletion was successfully carried out. So if we try to look up the booking with ```ID=101``` then after being deleted it should no longer be in the database. So running the ```GET``` keyword should not find any record, so we are checking that the ```expected_status=404``` which means it's "Not Found"
+This means the deletion was successfully carried out. So if we try to look up the booking with `ID=101` then after being deleted it should no longer be in the database. So running the `GET` keyword should not find any record, so we are checking that the `expected_status=404` which means it's "Not Found"
 
 Here's the report for this Test Case
 ![ROBOT Test Report](Resources/Images/API_docs/Delete_Booking_3.png)
 
-All these 
+
 
 ### Discussion
 
-That has covered using the Requests Library in Robot Framework to carry out the following API methods: 
+This section covers how to use the Requests Library with Robot Framework to perform the following API methods:: 
 * POST
 * GET
 * PUT 
 * PATCH
 * DELETE
 
-We now know how to construct the url for the method and pass in authorisation and required data using the ```body``` and ```Headers``` notation and how to use the response to verify the information received back from the API.
+We now understand how to construct the URL for each method, pass authorization and required data using the body and Headers parameters, and utilize the response to verify the information returned from the API.
 
 #### Testing
 
-The aim of this repository is to help you construct the test steps and use the correct syntax to create Test Cases. We are not actually testing the Restful Booker API's but rather using the documentation provided to fulfill this aim.
+This repository aims to help you construct test steps and use the correct syntax to create Test Cases. We are using the Restful Booker API documentation for demonstration purposes, not for actual testing.
 
-As I mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can be very long-winded and look complicated. Here is a link to all the tests we created [API_Methods](Robot_Tests/API_methods.robot). I refactored each method and moved keywords into a resource page so they can be used again. I also created a method to generate random data, so we don't have to keep typing in data. The refactored tests are here [API_Methods_Refactored](Robot_Tests/API_methods_Refactored.robot).
+As mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can sometimes be lengthy and appear complex. Here is a link to all the tests we created [API_Methods](Robot_Tests/API_methods.robot). 
 
-Hopefully that makes it clearer if you're looking to run API tests in Robot Framework instead of or as well as ```Postman```
+I refactored each method by moving keywords into a resource file for reusability. Additionally, I implemented a function to generate random data, eliminating the need to manually input data repeatedly. The refactored tests can be found here [API_Methods_Refactored](Robot_Tests/API_methods_Refactored.robot).
 
-Bear in mind the Restful Booker API's and website is free. There are some issues, for example when creating a record should the response code be 201 rather than 200? When deleting a record should the response code be 200 rather than 201? 
+Hopefully, this makes it easier for you to run API tests in Robot Framework—whether as an alternative to or alongside Postman.
 
-Also, when a booking is created and the deposit paid is set to ```False``` when I look at the booking again the deposit paid is set to ```True```. That could be a big issue for the company.
+Please note that the Restful Booker API and website are free to use. However, there are some inconsistencies, such as:
 
-Can you spot any other issues? If you create your own tests and verify expected responses vs actual responses I'm sure you will find other issues. 
+* When creating a record, should the response code be 201 (Created) instead of 200 (OK)?
+* When deleting a record, should the response code be 200 instead of 201?
+* Additionally, I observed an issue where creating a booking with deposit paid set to False results in the booking showing deposit paid as True upon retrieval. This could pose significant problems for data integrity and business logic.
 
-Anyway I hope this has helped. 
+Can you identify any other issues? If you create your own tests and verify whether the actual responses match the expected ones, you're likely to uncover further discrepancies.
 
-## Happy Testing.
+I hope this overview has been helpful.
+
+## Happy Testing!!
 
 
 
