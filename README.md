@@ -21,6 +21,7 @@
   * [GetBooking](#GetBooking)
   * [UpdateBooking](#UpdateBooking)
   * [PartialUpdate](#PartialUpdate)
+  * [DeleteBooking](#DeleteBooking)
 
 
 
@@ -178,7 +179,9 @@ Then we need to create a new booking, get the new booking ID, update the booking
 
 Now there's a lot going on and it may look confusing, but if we consider each line of the code it feeds into the next line. We can definitely refactor this and simplify it, by moving steps into their own methods/keywords which we can reuse again. For now, we will keep as is, and later I will share how I've refactored the tests to make them simpler and easier to maintain. Sometimes it's easier to follow the long-winded method while we understand what is happening and then get more abstract as our expertise increases.
 
-## PartialUpdate
+### PartialUpdate
+
+To partially update a booking we use the ```PATCH``` request.
 
 The booking ID is sent in the url to partially update a booking. We only need to change a minimum of 1 parameter or in other words, send a partial payload. 
 ![Update documentation 1](Resources/Images/API_docs/updatesPartialBooking_1.png)
@@ -198,7 +201,13 @@ Now we know what we need lets change the "additional needs" of the booking with 
 Here are the Results in the report
 ![Update documentation 5a](Resources/Images/API_docs/updatesPartialBooking_5a.png)
 
+### DeleteBooking
+To Delete a booking we use ```DELETE``` request.
 
+From the documentation below you can see we need, the url that contains the booking ID we want to delete and Authorisation. The API returns a success code when the operation has been completed.
+![Delete Documentation](Resources/Images/API_docs/Delete_Booking_1.png)
+
+Let's have a look how we can do that in Robot Framework.
 
 
 
