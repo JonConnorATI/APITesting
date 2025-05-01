@@ -14,4 +14,4 @@
 --loglevel TRACE
 --variable headless:false
 --debugfile debug_gc.log
-Robot_Tests/Get_booking_ids.robot
+Robot_Tests/API_methods.robot

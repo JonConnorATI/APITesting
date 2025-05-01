@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation       API Practice Tests
+Documentation       API_METHODS
 
 Resource        ../Resources/all_resources.resource
 
@@ -34,9 +34,9 @@ Test 2: Get the information for the booking with id=1
 
 Test 3: Create a booking (Refactored)
     [Documentation]  Creates a new booking in the API
-    [Tags]  donotrun
+    [Tags]
     ${booking_dates}    Create Dictionary    checkin=2025-04-23    checkout=2025-04-30
-    ${pre_body} =  Create Dictionary    firstname=Jon    lastname=Connor    totalprice=200   depositpaid=true
+    ${pre_body} =  Create Dictionary    firstname=Jon    lastname=Connor    totalprice=200   depositpaid=false
     ...     bookingdates=${booking_dates}
     ${response} =  POST    url=https://restful-booker.herokuapp.com/booking    json=${pre_body}
     ${id}    Set Variable    ${response.json()}[bookingid]
@@ -88,6 +88,7 @@ Test 5: Partially Update the booking that has ID=2 with new additional needs
 
 Test 6: Delete a booking by ID=101
     [Documentation]  1.Get the auth token-->2. Delete booking by ID-->3.Verify the Deletion
+    [Tags]  donotrun
      ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
