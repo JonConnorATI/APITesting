@@ -239,16 +239,16 @@ We now understand how to construct the URL for each method, pass authorization a
 
 This repository aims to help you construct test steps and use the correct syntax to create Test Cases. We are using the Restful Booker API documentation for demonstration purposes, not for actual testing.
 
-As mentioned throughout the [Robot Framework testing using RequestsLibrary](#Robot-Framework-testing-using-RequestsLibrary) the methods can sometimes be lengthy and appear complex. Here is a link to all the tests we created <a href="https://github.com/JonConnorATI/APITesting/blob/main/Robot_Tests/API_methods.robot" target="_blank">API Methods</a>. 
+As mentioned throughout this document the methods can sometimes be lengthy and appear complex. Here is a link to all the tests we created <a href="https://github.com/JonConnorATI/APITesting/blob/main/Robot_Tests/API_methods.robot" target="_blank">API Methods</a>. 
 
-I refactored each method by moving keywords into a resource file for reusability. Additionally, I implemented a function to generate random data, eliminating the need to manually input data repeatedly. The refactored tests can be found here [API_Methods_Refactored](Robot_Tests/API_methods_Refactored.robot).
+I refactored each method by moving keywords into a resource file for reusability. Additionally, I implemented a function to generate random data, eliminating the need to manually input data repeatedly. The refactored tests can be found here <a href="https://github.com/JonConnorATI/APITesting/blob/main/Robot_Tests/API_methods_Refactored.robot" target="_blank">API_Methods_Refactored</a>.
 
 Hopefully, this makes it easier for you to run API tests in Robot Framework—whether as an alternative to or alongside Postman.
 
 Please note that the Restful Booker API and website are free to use. However, there are some inconsistencies, such as:
 
 * When creating a record, should the response code be 201 (Created) instead of 200 (OK)?
-* When deleting a record, should the response code be 200 instead of 201?
+* When deleting a record, should the response code be 200 (OK) instead of 201 (Created)?
 * Additionally, I observed an issue where creating a booking with deposit paid set to False results in the booking showing deposit paid as True upon retrieval. This could pose significant problems for data integrity and business logic.
 
 Can you identify any other issues? If you create your own tests and verify whether the actual responses match the expected ones, you're likely to uncover further discrepancies.
