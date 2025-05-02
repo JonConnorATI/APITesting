@@ -1,4 +1,4 @@
-# API Testing - Robot Framework with RequestsLibrary 
+# <a href="https://github.com/JonConnorATI/APITesting" target="_blank">API Testing</a> - Robot Framework with RequestsLibrary 
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@
 
 ### Introduction
 
-This repository has been created to explain, how to use Robot Framework with RequestsLibrary to automate tests that you might carry out using `Postman.`
+This <a href="https://github.com/JonConnorATI/APITesting" target="_blank">repository</a> has been created to explain, how to use Robot Framework with RequestsLibrary to automate tests that you might carry out using `Postman.`
 
 ### API Methods
 APIs have several methods used to create, read, update and delete.<br> 
@@ -53,7 +53,7 @@ _Our Test_<br>
 When testing the UI, in theory, we just need the URL of the website, and we can start testing. However, with APIs, there is no UI involved. Instead, we need to be given the documentation for each API we are testing.
 
 ### API Documentation
-There is an excellent website, [Restful Booker](https://restful-booker.herokuapp.com/), created by [Mark Winterington](http://mwtestconsultancy.co.uk/), for practicing API testing. I will be using this website and its content to help explain using  Robot Framework to test its APIs. This is a great resource for learning and has links to more learning sources for those who want to expand their knowledge. I would definitely recommend you check those out.<br><br>
+There is an excellent website, <a href="https://restful-booker.herokuapp.com/" target="_blank">Restful Booker</a>, created by <a href="http://mwtestconsultancy.co.uk/" target="_blank">Mark Winterington</a>, for practicing API testing. I will be using this website and its content to help explain using  Robot Framework to test its APIs. This is a great resource for learning and has links to more learning sources for those who want to expand their knowledge. I would definitely recommend you check those out.
 
 The Restfull booker sites lists the APIs in the following order:
 
@@ -67,11 +67,11 @@ The Restfull booker sites lists the APIs in the following order:
 * PartialUpdateBooking
 * DeleteBooking
 
-I will be referring to this page, from the Restful Booker site, throughout, to show how to create the code so that Robot Framework can carry out the requests. You can find the API documentation [here](https://restful-booker.herokuapp.com/apidoc/index.html).
+I will be referring to this page, from the Restful Booker site, throughout, to show how to create the code so that Robot Framework can carry out the requests. You can find the API documentation <a href="https://restful-booker.herokuapp.com/apidoc/index.html" target="_blank"> here</a>.
 
 ### Robot Framework testing using RequestsLibrary
 
-We need to import the requests library. Here is the documentation, [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html), which contains all the information you might need as well as explanations and notes on all the keywords.
+We need to import the requests library. Here is the documentation, <a href="https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html" target="_blank">Requests Library</a>, which contains all the information you might need as well as explanations and notes on all the keywords.
 
 ### GetBookingIds
 
