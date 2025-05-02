@@ -7,28 +7,28 @@ Resource        ../Resources/all_resources.resource
 
 Test 1a: Get all the booking ID's
     [Documentation]  Returns the ids of all the bookings that exist within the API.
-    [Tags]  donotrun
+    [Tags]
     ${response} =  GET    https://restful-booker.herokuapp.com/booking  expected_status=OK
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
 Test 1b: Get all the bookings with a specific first name, "John"
     [Documentation]  Returns the ids of all the bookings that exist within the API.
-    [Tags]  donotrun
+    [Tags]
     ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=John
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
 Test 1c: Get all the bookings with a specific name, "Sally Brown"
     [Documentation]  Returns the ids of all the bookings that exist within the API.
-    [Tags]  donotrun
+    [Tags]
     ${response} =  GET    url=https://restful-booker.herokuapp.com/booking?firstname=Sally&lastname=Brown
     ${no_of_bookings} =  Get Length    ${response.json()}
     Log To Console    No of bookings is ${no_of_bookings}
 
 Test 2: Get the information for the booking with id=1
     [Documentation]  Returns the fields for the booking with the given id
-    [Tags]  donotrun
+    [Tags]
     ${response} =  GET  url=https://restful-booker.herokuapp.com/booking/1
     Log To Console   This is the booking info ${response.json()}
 
@@ -46,7 +46,7 @@ Test 3: Create a booking (Refactored)
 
 Test 4: Update Booking
     [Documentation]  1.Get the auth token-->2.Create a booking-->3.Update the booking-->4.Verify all updated
-    [Tags]  donotrun
+    [Tags]
     ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
@@ -71,7 +71,7 @@ Test 4: Update Booking
 
 Test 5: Partially Update the booking that has ID=2 with new additional needs
     [Documentation]  1.Get the auth token-->2. Partially Update a booking by ID-->3.Verify the partial update
-    [Tags]  donotrun
+    [Tags]
     ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
@@ -88,7 +88,7 @@ Test 5: Partially Update the booking that has ID=2 with new additional needs
 
 Test 6: Delete a booking by ID=101
     [Documentation]  1.Get the auth token-->2. Delete booking by ID-->3.Verify the Deletion
-    [Tags]  donotrun
+    [Tags]
      ################### 1. Get the authorisation ###################
     ${body}    Create Dictionary    username=admin    password=password123
     ${response}    POST    url=https://restful-booker.herokuapp.com/auth    json=${body}
