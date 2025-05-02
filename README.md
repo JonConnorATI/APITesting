@@ -19,6 +19,7 @@
     * [By multiple filters](#By-multiple-filters)
   
   * [GetBooking](#GetBooking)
+  * [CreateBooking](#CreateBooking)
   * [UpdateBooking](#UpdateBooking)
   * [PartialUpdate](#PartialUpdate)
   * [DeleteBooking](#DeleteBooking)
@@ -136,7 +137,7 @@ And here is the output in the report
 
 ![Get request return json file](/Resources/Images/API_docs/getID_one_return.png)
 
-### Create Booking
+### CreateBooking
 We'll start by looking at the documentation for this API
 ![Create booking API Docs](/Resources/Images/API_docs/createBooking_1.png)
 
