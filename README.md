@@ -46,8 +46,8 @@ The general rule of thumb is POST is used to create, GET is used to read, PUT an
 A request uses one of the methods (POST, GET, PUT, PATCH or DELETE) and when executed sends a response. We are usually looking for the response to be '200' which means it's OK.<br>
 Depending on the API, and how it was developed, it may or may not be programmed to send additional information. We can verify our tests by capturing these responses and asserting we are getting the correct response when we carry out a request.
 
-_Our Test_<br>
-`Request-->Do Something with an API Method --> Actual response --> Compare Actual response vs Expected response --> Pass or Fail`
+Our Test 
+`Request-->Actual response --> Compare with Expected response --> Pass or Fail`
 
 
 ### API Testing Vs UI Testing
