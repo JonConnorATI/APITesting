@@ -226,15 +226,15 @@ Here's the report for this Test Case
 
 
 ### Discussion <a name="Discussion"></a>
+We now understand how to construct the URL for each method, pass authorization and required data using the body and Headers parameters, and utilize the response to verify the information returned from the API:
 
-This section covers how to use the Requests Library with Robot Framework to perform the following API methods:: 
 * POST
 * GET
 * PUT 
 * PATCH
 * DELETE
 
-We now understand how to construct the URL for each method, pass authorization and required data using the body and Headers parameters, and utilize the response to verify the information returned from the API.
+
 
 #### Testing
 
